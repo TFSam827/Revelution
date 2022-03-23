@@ -10,5 +10,9 @@ public class PlayerCollision : MonoBehaviour
         {
             transform.position = spawner.transform.position;
         }
+        if (transform.position.y < -6)
+        {
+            transform.position = spawner.transform.position;
+        }
     }
 }
