@@ -4,13 +4,9 @@ public class PlayerCollision : MonoBehaviour
 {
     public GameObject spawner;
 
-    void OnCollisionEnter2D (Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "lava")
-        {
-            transform.position = spawner.transform.position;
-        }
-        if (transform.position.y < -6)
         {
             transform.position = spawner.transform.position;
         }

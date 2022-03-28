@@ -1123,7 +1123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41de8e2bab1f84567ab2be974449f7df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 0}
+  spawner: {fileID: 161012392}
 --- !u!114 &1627433418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1236,6 +1236,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 1291812250}
   m_CeilingCheck: {fileID: 329295567}
   m_CrouchDisableCollider: {fileID: 1627433421}
+  dashSpeed: 2
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
