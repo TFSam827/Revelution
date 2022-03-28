@@ -9,7 +9,7 @@ public class level_1 : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("Type-2");
+            SceneManager.LoadScene("level-2");
         }
     }
 }
