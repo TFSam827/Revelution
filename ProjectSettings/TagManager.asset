@@ -7,6 +7,7 @@ TagManager:
   - lava
   - floor
   - spawner
+  - edge
   layers:
   - Default
   - TransparentFX

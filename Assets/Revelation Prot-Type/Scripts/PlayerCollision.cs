@@ -9,6 +9,9 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.tag == "lava")
         {
             transform.position = spawner.transform.position;
+        } else if (collision.gameObject.tag == "edge")
+        {
+            transform.position = spawner.transform.position;
         }
     }
 }
