@@ -4,61 +4,27 @@ using UnityEngine;
 
 public class camera_movement : MonoBehaviour
 {
-    Rigidbody2D rb;
+    const float MAX_DISTANCE = 5f;
 
-    public GameObject maxlength;
-    public GameObject minlength;
-    public GameObject maxheight;
-    public GameObject minheight;
-
-    public GameObject player;
-
-    public CharacterController2D controller;
-
-    public float speed = 40f;
-
-    float horizontalmove = 0f;
-    public float dashTime = 3f;
-
-    bool jump = false;
-    bool crouch = false;
+    public Transform target; // Specify the player
+    public float speed = 1;
+    private Vector3 destination;
+    private Vector3 projection;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-
-        rb.isKinematic = true;
+        destination = transform.position;
+        projection = target.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        if (player.transform.position.x == maxlength.transform.position.x)
+        if ((target.position - projection).magnitude > MAX_DISTANCE)
         {
-                horizontalmove = Input.GetAxisRaw("Left") * speed;
-        } else if (player.transform.position.x == minlength.transform.position.x)
-        {
-                horizontalmove = Input.GetAxisRaw("Right") * speed;
-        } else if (player.transform.position.y == maxheight.transform.position.y)
-        {
-            if(Input.GetButtonDown("Jump"))
-            {
-                jump = true;
-            }
-        } else if (player.transform.position.y == minheight.transform.position.y)
-        {
-            rb.isKinematic = false;
+            projection = Vector3.MoveTowards(projection, target.position, Time.deltaTime * speed);
+            destination = projection;
+            destination.y = transform.position.y;
+            transform.position = destination;
         }
-
-        rb.isKinematic = true;
-    }
-
-    void FixedUpdate()
-    {
-
-        controller.Move(horizontalmove * Time.fixedDeltaTime, crouch, jump);
-
-        jump = false;
-
     }
 }
