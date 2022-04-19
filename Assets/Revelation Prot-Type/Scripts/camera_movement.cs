@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class camera_movement : MonoBehaviour
 {
-    const float MAX_DISTANCE = 5f;
+    const float MAX_DISTANCE = 10f;
 
     public Transform target; // Specify the player
     public float speed = 1;
