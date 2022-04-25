@@ -30,7 +30,9 @@ public class PlayerMovement : MonoBehaviour
         controls = new PlayerControls();
 
         controls.Gameplay.Left.performed += ctx => Left();
+        controls.Gameplay.Left.canceled += ctx => Off();
         controls.Gameplay.Right.performed += ctx => Right();
+        controls.Gameplay.Right.canceled += ctx => Off();
         controls.Gameplay.Jump.performed += ctx => Jump();
         controls.Gameplay.Down.started += ctx => CrouchOn();
         controls.Gameplay.Down.canceled += ctx => CrouchOff();
@@ -40,6 +42,11 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
+    }
+
+    void Off()
+    {
+        horizontalmove = 0;
     }
 
     void Left()

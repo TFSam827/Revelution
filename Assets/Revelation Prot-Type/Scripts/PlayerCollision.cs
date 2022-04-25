@@ -3,14 +3,6 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     public GameObject spawner;
-    public GameObject camera;
-
-    private Vector3 destination;
-
-    void Start()
-    {
-        destination = camera.transform.position;
-    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -20,7 +12,6 @@ public class PlayerCollision : MonoBehaviour
         } else if (collision.gameObject.tag == "edge")
         {
             transform.position = spawner.transform.position;
-            camera.transform.position = destination;
         }
     }
 }
