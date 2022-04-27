@@ -16,12 +16,16 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController2D controller;
 
     public float speed = 40f;
+    public float dash = 80f;
+    public float time = 1f;
+    private float backup;
 
     float horizontalmove = 0f;
     public float dashTime = 3f;
 
     bool jump = false;
     bool crouch = false;
+    bool accel = false;
 
     void Awake()
     {
@@ -33,15 +37,16 @@ public class PlayerMovement : MonoBehaviour
         controls.Gameplay.Left.canceled += ctx => Off();
         controls.Gameplay.Right.performed += ctx => Right();
         controls.Gameplay.Right.canceled += ctx => Off();
+        controls.Gameplay.Dash.performed += ctx => Dash();
+
         controls.Gameplay.Jump.performed += ctx => Jump();
         controls.Gameplay.Down.started += ctx => CrouchOn();
         controls.Gameplay.Down.canceled += ctx => CrouchOff();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-
+        backup = time;
     }
 
     void Off()
@@ -84,11 +89,38 @@ public class PlayerMovement : MonoBehaviour
         controls.Gameplay.Disable();
     }
 
+    void Dash()
+    {
+        if (horizontalmove > 0)
+        {
+            horizontalmove = 1 * dash;
+        } else if (horizontalmove < 0)
+        {
+            horizontalmove = -1 * dash; 
+        }
+        accel = true;
+
+
+    }
+
     void FixedUpdate()
     {
 
         controller.Move(horizontalmove * Time.fixedDeltaTime, crouch, jump);
-
+        while (accel)
+        {
+            time -= Time.deltaTime;
+            if (horizontalmove > 0 && time == 0)
+            {
+                horizontalmove = 1 * speed;
+                time = backup;
+            }
+            else if (horizontalmove < 0 && time == 0)
+            {
+                horizontalmove = -1 * speed;
+                time = backup;
+            }
+        }
         jump = false;
 
     }
