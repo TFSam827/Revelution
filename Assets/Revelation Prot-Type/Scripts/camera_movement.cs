@@ -5,7 +5,7 @@ using UnityEngine;
 public class camera_movement : MonoBehaviour
 {
     const float MAX_DISTANCE = 10f;
-    const float MAX_HEIGHT = 4f;
+    const float MAX_HEIGHT = 3f;
     const float MIN_HEIGHT = -2.5f;
 
     public Transform target; // Specify the player

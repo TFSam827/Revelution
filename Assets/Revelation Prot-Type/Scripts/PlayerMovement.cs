@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,20 +16,34 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController2D controller;
 
-    public float speed = 40f;
-    public float dash = 80f;
-    public float time = 1f;
-    private float backup;
+    public float speed = 10f;
+    public float dash = 40f;
+    public float time = 0.25f;
+    private float current;
+    private float direction;
+    private float move;
+
+    [SerializeField] private LayerMask m_WhatIsGround;
+    [SerializeField] private Transform m_GroundCheck;
+    const float k_GroundedRadius = .2f;
+
+    public UnityEvent OnLandEvent;
 
     float horizontalmove = 0f;
-    public float dashTime = 3f;
 
     bool jump = false;
     bool crouch = false;
-    bool accel = false;
+    bool run = false;
+    bool isground = true;
+    bool dashing;
 
     void Awake()
     {
+        if (OnLandEvent == null)
+        {
+            OnLandEvent = new UnityEvent();
+        }
+            
         rb = GetComponent<Rigidbody2D>();
 
         controls = new PlayerControls();
@@ -37,19 +52,19 @@ public class PlayerMovement : MonoBehaviour
         controls.Gameplay.Left.canceled += ctx => Off();
         controls.Gameplay.Right.performed += ctx => Right();
         controls.Gameplay.Right.canceled += ctx => Off();
-        controls.Gameplay.Dash.performed += ctx => Dash();
-
+        controls.Gameplay.Run.performed += ctx => RunOn();
+        controls.Gameplay.Run.canceled += ctx => RunOff();
         controls.Gameplay.Jump.performed += ctx => Jump();
         controls.Gameplay.Down.started += ctx => CrouchOn();
         controls.Gameplay.Down.canceled += ctx => CrouchOff();
     }
 
-    void Start()
+    void Update()
     {
-        backup = time;
+        move = horizontalmove;
     }
 
-    void Off()
+        void Off()
     {
         horizontalmove = 0;
     }
@@ -57,11 +72,52 @@ public class PlayerMovement : MonoBehaviour
     void Left()
     {
         horizontalmove = -1 * speed;
+        if (run)
+        {
+            horizontalmove = horizontalmove * 1.5f;
+        }
     }
 
     void Right()
     {
         horizontalmove = 1 * speed;
+        if (run)
+        {
+            horizontalmove = horizontalmove * 1.5f;
+        }
+    }
+
+    void RunOn()
+    {
+        horizontalmove = horizontalmove * 2;
+        run = true;
+    }
+
+    void RunOff()
+    {
+        run = false;
+    }
+
+    void Dash()
+    {
+        if (!isground && horizontalmove != 0)
+        {
+            dashing = true;
+            current = time;
+            horizontalmove = 0;
+            direction = move;
+        }
+        if (dashing)
+        {
+            rb.velocity = transform.right * direction * dash;
+
+            current -= Time.deltaTime;
+
+            if (current <= 0)
+            {
+                dashing = false;
+            }
+        }
     }
 
     void Jump()
@@ -89,38 +145,24 @@ public class PlayerMovement : MonoBehaviour
         controls.Gameplay.Disable();
     }
 
-    void Dash()
-    {
-        if (horizontalmove > 0)
-        {
-            horizontalmove = 1 * dash;
-        } else if (horizontalmove < 0)
-        {
-            horizontalmove = -1 * dash; 
-        }
-        accel = true;
-
-
-    }
-
     void FixedUpdate()
     {
+        bool wasGrounded = isground;
 
-        controller.Move(horizontalmove * Time.fixedDeltaTime, crouch, jump);
-        while (accel)
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+        for (int i = 0; i < colliders.Length; i++)
         {
-            time -= Time.deltaTime;
-            if (horizontalmove > 0 && time == 0)
+            if (colliders[i].gameObject != gameObject)
             {
-                horizontalmove = 1 * speed;
-                time = backup;
-            }
-            else if (horizontalmove < 0 && time == 0)
-            {
-                horizontalmove = -1 * speed;
-                time = backup;
+                isground = true;
+                if (!wasGrounded)
+                {
+                    OnLandEvent.Invoke();
+                }
             }
         }
+
+        controller.Move(horizontalmove * Time.fixedDeltaTime, crouch, jump);
         jump = false;
 
     }
