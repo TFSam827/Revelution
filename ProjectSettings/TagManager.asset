@@ -8,6 +8,8 @@ TagManager:
   - floor
   - spawner
   - edge
+  - top
+  - bottom
   layers:
   - Default
   - TransparentFX
