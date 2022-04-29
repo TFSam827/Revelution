@@ -18,4 +18,4 @@ EditorBuildSettings:
     path: Assets/Revelation Prot-Type/Scenes/title.unity
     guid: 864db815d60724584bb5e2154edfcce7
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: 8149e149097814169a066e10c75de536, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: f7ea3bd72f78348419f1bbdee749dfc3, type: 2}
