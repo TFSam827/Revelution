@@ -678,7 +678,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 111031259}
   speed: 40
-  dashTime: 3
+  dash: 40
+  time: 0.25
+  m_WhatIsGround:
+    serializedVersion: 2
+    m_Bits: 55
+  m_GroundCheck: {fileID: 1592167235}
+  OnLandEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!58 &111031256
 CircleCollider2D:
   m_ObjectHideFlags: 0

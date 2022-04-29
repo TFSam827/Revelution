@@ -1090,7 +1090,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.593328
+  orthographic size: 5.5662284
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2583,7 +2583,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1693579893}
   speed: 40
-  dashTime: 3
+  dash: 40
+  time: 0.25
+  m_WhatIsGround:
+    serializedVersion: 2
+    m_Bits: 55
+  m_GroundCheck: {fileID: 974346886}
+  OnLandEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!58 &1693579890
 CircleCollider2D:
   m_ObjectHideFlags: 0
