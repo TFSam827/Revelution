@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController2D controller;
 
     public float speed = 10f;
-    public float dash = 40f;
+    public float dash = 10f;
     public float time = 0.25f;
     private float current;
     private float direction;
@@ -54,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         controls.Gameplay.Right.canceled += ctx => Off();
         controls.Gameplay.Run.performed += ctx => RunOn();
         controls.Gameplay.Run.canceled += ctx => RunOff();
+        controls.Gameplay.Dash.performed += ctx => Dash();
         controls.Gameplay.Jump.performed += ctx => Jump();
         controls.Gameplay.Down.started += ctx => CrouchOn();
         controls.Gameplay.Down.canceled += ctx => CrouchOff();
@@ -64,9 +65,14 @@ public class PlayerMovement : MonoBehaviour
         move = horizontalmove;
     }
 
-        void Off()
+    void Off()
     {
         horizontalmove = 0;
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        isground = false;
     }
 
     void Left()
@@ -116,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
             if (current <= 0)
             {
                 dashing = false;
+                rb.velocity = rb.velocity.zero;
             }
         }
     }

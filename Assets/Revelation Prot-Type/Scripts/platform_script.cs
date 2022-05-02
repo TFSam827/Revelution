@@ -45,7 +45,7 @@ public class platform_script : MonoBehaviour
 
     void Down()
     {
-        while (move && !top)
+        while (move && !bottom)
         {
             
         }
@@ -53,7 +53,7 @@ public class platform_script : MonoBehaviour
 
     void Up()
     {
-        while (move && !bottom)
+        while (move && !top)
         {
 
         }
