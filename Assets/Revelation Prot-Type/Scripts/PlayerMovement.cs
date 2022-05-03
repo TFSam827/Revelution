@@ -122,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
             if (current <= 0)
             {
                 dashing = false;
-                rb.velocity = rb.velocity.zero;
+                rb.velocity = Vector2.zero;
             }
         }
     }
