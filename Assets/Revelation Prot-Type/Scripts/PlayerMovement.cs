@@ -1,7 +1,6 @@
 //Credit Brackeys
 //Link: https://www.youtube.com/watch?v=dwcT-Dch0bA
-//Edited by Samuel Benting
-
+//This is not the original from th video. It has been modified to work with new movement
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed = 10f;
     public float dash = 10f;
-    public float time = 0.25f;
+    public float time = 10f;
     private float current;
     private float direction;
     private float move;
@@ -113,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
             horizontalmove = 0;
             direction = move;
         }
-        if (dashing)
+        while (dashing)
         {
             rb.velocity = transform.right * direction * dash;
 
@@ -122,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
             if (current <= 0)
             {
                 dashing = false;
-                rb.velocity = Vector2.zero;
+                
             }
         }
     }
