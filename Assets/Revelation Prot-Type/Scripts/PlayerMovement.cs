@@ -16,8 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController2D controller;
 
     public float speed = 10f;
-    public float dash = 10f;
-    public float time = 1f;
+    public float time = 10f;
     private float current;
     private float move;
 
@@ -74,6 +73,9 @@ public class PlayerMovement : MonoBehaviour
         if (run)
         {
             horizontalmove = horizontalmove * 1.5f;
+        } else if (dashing)
+        {
+            horizontalmove = horizontalmove * 2;
         }
     }
 
@@ -84,11 +86,15 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontalmove = horizontalmove * 1.5f;
         }
+        else if (dashing)
+        {
+            horizontalmove = horizontalmove * 2;
+        }
     }
 
     void RunOn()
     {
-        horizontalmove = horizontalmove * 2;
+        horizontalmove = horizontalmove * 1.5f;
         run = true;
     }
 
@@ -107,18 +113,15 @@ public class PlayerMovement : MonoBehaviour
         }
         while (dashing)
         {
-            horizontalmove = move * 2;
-
-            current -= Time.deltaTime;
-
-            if (current <= 0)
-            {
-                dashing = false;
-                horizontalmove = move;
-                Debug.Log("Done");
-            }
+            current = current - Time.deltaTime;
+           if (current <= 0)
+           {
+              dashing = false;
+              horizontalmove = move;
+              Debug.Log("Done");
+           }
         }
-        
+
     }
 
     void Jump()
