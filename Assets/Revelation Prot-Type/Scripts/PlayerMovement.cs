@@ -17,9 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed = 10f;
     public float dash = 10f;
-    public float time = 10f;
+    public float time = 1f;
     private float current;
-    private float direction;
     private float move;
 
     [SerializeField] private LayerMask m_WhatIsGround;
@@ -57,11 +56,6 @@ public class PlayerMovement : MonoBehaviour
         controls.Gameplay.Jump.performed += ctx => Jump();
         controls.Gameplay.Down.started += ctx => CrouchOn();
         controls.Gameplay.Down.canceled += ctx => CrouchOff();
-    }
-
-    void Update()
-    {
-        move = horizontalmove;
     }
 
     void Off()
@@ -105,25 +99,26 @@ public class PlayerMovement : MonoBehaviour
 
     void Dash()
     {
+        move = horizontalmove;
         if (!isground && horizontalmove != 0)
         {
             dashing = true;
             current = time;
-            horizontalmove = 0;
-            direction = move;
         }
         while (dashing)
         {
-            rb.velocity = transform.right * direction * dash;
+            horizontalmove = move * 2;
 
             current -= Time.deltaTime;
 
             if (current <= 0)
             {
                 dashing = false;
-                
+                horizontalmove = move;
+                Debug.Log("Done");
             }
         }
+        
     }
 
     void Jump()
