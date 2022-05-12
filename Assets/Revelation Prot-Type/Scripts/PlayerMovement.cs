@@ -15,8 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController2D controller;
 
-    public float speed = 10f;
-    public float time = 10f;
+    public float speed = 0f;
+    public float time = 0f;
     private float current;
     private float move;
 
@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     bool crouch = false;
     bool run = false;
     bool isground = true;
-    bool dashing;
+    bool dashing = true;
 
     void Awake()
     {
@@ -45,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
 
         controls = new PlayerControls();
 
+        current = time;
+
         controls.Gameplay.Left.performed += ctx => Left();
         controls.Gameplay.Left.canceled += ctx => Off();
         controls.Gameplay.Right.performed += ctx => Right();
@@ -55,6 +57,15 @@ public class PlayerMovement : MonoBehaviour
         controls.Gameplay.Jump.performed += ctx => Jump();
         controls.Gameplay.Down.started += ctx => CrouchOn();
         controls.Gameplay.Down.canceled += ctx => CrouchOff();
+    }
+
+    void Update()
+    {
+        while (dashing)
+        {
+            current -= Time.deltaTime;
+            Debug.Log(current);
+        }
     }
 
     void Off()
@@ -73,9 +84,6 @@ public class PlayerMovement : MonoBehaviour
         if (run)
         {
             horizontalmove = horizontalmove * 1.5f;
-        } else if (dashing)
-        {
-            horizontalmove = horizontalmove * 2;
         }
     }
 
@@ -85,10 +93,6 @@ public class PlayerMovement : MonoBehaviour
         if (run)
         {
             horizontalmove = horizontalmove * 1.5f;
-        }
-        else if (dashing)
-        {
-            horizontalmove = horizontalmove * 2;
         }
     }
 
@@ -106,22 +110,18 @@ public class PlayerMovement : MonoBehaviour
     void Dash()
     {
         move = horizontalmove;
-        if (!isground && horizontalmove != 0)
+        if (!isground && dashing)
         {
-            dashing = true;
-            current = time;
-        }
-        while (dashing)
-        {
-            current = current - Time.deltaTime;
-           if (current <= 0)
-           {
-              dashing = false;
-              horizontalmove = move;
-              Debug.Log("Done");
-           }
-        }
+            horizontalmove = move * 2;
 
+            if (current <= 0)
+            {
+                current = time;
+                horizontalmove = move;
+                Debug.Log("Done");
+                dashing = false;
+            }
+        }
     }
 
     void Jump()

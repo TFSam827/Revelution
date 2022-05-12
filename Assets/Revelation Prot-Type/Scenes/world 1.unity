@@ -3485,9 +3485,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 514627182}
-  speed: 40
-  dash: 80
-  time: 1
+  speed: 20
+  time: 0.25
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 55
@@ -3552,11 +3551,11 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &514627182
 MonoBehaviour:
