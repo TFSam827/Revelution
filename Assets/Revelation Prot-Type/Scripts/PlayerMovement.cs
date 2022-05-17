@@ -1,4 +1,4 @@
-//Credit Brackeys
+////Credit Brackeys
 //Link: https://www.youtube.com/watch?v=dwcT-Dch0bA
 //This is not the original from th video. It has been modified to work with new movement
 using System.Collections;
@@ -30,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
 
     bool jump = false;
     bool crouch = false;
-    bool run = false;
     bool isground = true;
     bool dashing = true;
 
@@ -53,20 +52,20 @@ public class PlayerMovement : MonoBehaviour
         controls.Gameplay.Right.canceled += ctx => Off();
         controls.Gameplay.Run.performed += ctx => RunOn();
         controls.Gameplay.Run.canceled += ctx => RunOff();
-        controls.Gameplay.Dash.performed += ctx => Dash();
+        //controls.Gameplay.Dash.performed += ctx => Dash();
         controls.Gameplay.Jump.performed += ctx => Jump();
         controls.Gameplay.Down.started += ctx => CrouchOn();
         controls.Gameplay.Down.canceled += ctx => CrouchOff();
     }
 
-    void Update()
-    {
-        while (dashing)
-        {
-            current -= Time.deltaTime;
-            Debug.Log(current);
-        }
-    }
+    //void Update()
+    //{
+    //    while (dashing)
+    //    {
+    //        current -= Time.deltaTime;
+    //        Debug.Log(current);
+    //    }
+    //}
 
     void Off()
     {
@@ -81,30 +80,22 @@ public class PlayerMovement : MonoBehaviour
     void Left()
     {
         horizontalmove = -1 * speed;
-        if (run)
-        {
-            horizontalmove = horizontalmove * 1.5f;
-        }
     }
 
     void Right()
     {
         horizontalmove = 1 * speed;
-        if (run)
-        {
-            horizontalmove = horizontalmove * 1.5f;
-        }
     }
 
     void RunOn()
     {
-        horizontalmove = horizontalmove * 1.5f;
-        run = true;
+        move = horizontalmove;
+        horizontalmove = horizontalmove * 2f;
     }
 
     void RunOff()
     {
-        run = false;
+        horizontalmove = move;
     }
 
     void Dash()

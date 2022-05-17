@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class platform_script : MonoBehaviour
 {
+    Rigidbody2D rb;
     PlayerControls controls;
 
     bool move = false;
@@ -12,7 +13,11 @@ public class platform_script : MonoBehaviour
 
     void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
+
         controls = new PlayerControls();
+        controls.Gameplay.Up.performed += ctx => Down();
+        controls.Gameplay.Down.performed += ctx => Up();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -43,19 +48,24 @@ public class platform_script : MonoBehaviour
         }
     }
 
+    void Off()
+    {
+        rb.velocity = Vector2.zero;
+    }
+
     void Down()
     {
-        while (move && !bottom)
+        if (move && !bottom)
         {
-            
+            rb.velocity = Vector2.down;
         }
     }
 
     void Up()
     {
-        while (move && !top)
+        if (move && !top)
         {
-
+            rb.velocity = Vector2.up;
         }
     }
 }
