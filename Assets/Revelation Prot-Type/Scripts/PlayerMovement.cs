@@ -52,20 +52,20 @@ public class PlayerMovement : MonoBehaviour
         controls.Gameplay.Right.canceled += ctx => Off();
         controls.Gameplay.Run.performed += ctx => RunOn();
         controls.Gameplay.Run.canceled += ctx => RunOff();
-        //controls.Gameplay.Dash.performed += ctx => Dash();
+        controls.Gameplay.Dash.performed += ctx => Dash();
         controls.Gameplay.Jump.performed += ctx => Jump();
         controls.Gameplay.Down.started += ctx => CrouchOn();
         controls.Gameplay.Down.canceled += ctx => CrouchOff();
     }
 
-    //void Update()
-    //{
-    //    while (dashing)
-    //    {
-    //        current -= Time.deltaTime;
-    //        Debug.Log(current);
-    //    }
-    //}
+    void Update()
+    {
+        while (dashing)
+        {
+            current -= Time.deltaTime;
+            Debug.Log(current);
+        }
+    }
 
     void Off()
     {
