@@ -1114,10 +1114,10 @@ GameObject:
   m_Component:
   - component: {fileID: 514627185}
   - component: {fileID: 514627184}
-  - component: {fileID: 514627182}
   - component: {fileID: 514627181}
   - component: {fileID: 514627180}
   - component: {fileID: 514627179}
+  - component: {fileID: 514627182}
   - component: {fileID: 514627178}
   - component: {fileID: 514627177}
   m_Layer: 3
@@ -1305,7 +1305,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514627175}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 64.97965, y: -1.39, z: 1}
+  m_LocalPosition: {x: 63.979652, y: -1.39, z: 1}
   m_LocalScale: {x: 4, y: 4, z: 0}
   m_Children:
   - {fileID: 444168989}
@@ -1760,7 +1760,7 @@ GameObject:
   - component: {fileID: 819335571}
   - component: {fileID: 819335572}
   m_Layer: 0
-  m_Name: underground (1)
+  m_Name: underground (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1999,8 +1999,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972943616}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.289537, y: 24.4362, z: -0.4569526}
-  m_LocalScale: {x: 0.99732614, y: 2.6763568, z: 1}
+  m_LocalPosition: {x: -10.2921, y: 24.4345, z: -0.4569}
+  m_LocalScale: {x: 1.0025122, y: 2.679836, z: 1}
   m_Children: []
   m_Father: {fileID: 196395271}
   m_RootOrder: 0
@@ -2236,7 +2236,7 @@ GameObject:
   - component: {fileID: 996307922}
   - component: {fileID: 996307923}
   m_Layer: 0
-  m_Name: underground (1)
+  m_Name: underground (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2746,7 +2746,7 @@ GameObject:
   - component: {fileID: 1148525263}
   - component: {fileID: 1148525264}
   m_Layer: 0
-  m_Name: underground (1)
+  m_Name: underground (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3406,7 +3406,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1388197933}
   - component: {fileID: 1388197932}
-  - component: {fileID: 1388197934}
   m_Layer: 0
   m_Name: top
   m_TagString: top
@@ -3427,7 +3426,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.045978546, y: -0.450297}
+  m_Offset: {x: 0.0395298, y: -0.46749687}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3438,7 +3437,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.07545471, y: 0.03721261}
+  m_Size: {x: 0.0883522, y: 0.07161236}
   m_EdgeRadius: 0
 --- !u!4 &1388197933
 Transform:
@@ -3454,32 +3453,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1388197934
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388197931}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 2.950018, y: -0.34526324}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.09821701, y: 0.1663146}
-  m_EdgeRadius: 0
 --- !u!1 &1409409413
 GameObject:
   m_ObjectHideFlags: 0
@@ -3957,7 +3930,7 @@ GameObject:
   - component: {fileID: 1696269285}
   - component: {fileID: 1696269286}
   m_Layer: 0
-  m_Name: underground (3)
+  m_Name: underground (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4306,7 +4279,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.8341837
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4330,7 +4303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828065727}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 65, y: 1, z: -10}
+  m_LocalPosition: {x: 64, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4361,7 +4334,7 @@ GameObject:
   - component: {fileID: 1836739310}
   - component: {fileID: 1836739311}
   m_Layer: 0
-  m_Name: underground (2)
+  m_Name: underground (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4771,7 +4744,7 @@ GameObject:
   - component: {fileID: 2010283055}
   - component: {fileID: 2010283056}
   m_Layer: 0
-  m_Name: underground (1)
+  m_Name: underground (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
