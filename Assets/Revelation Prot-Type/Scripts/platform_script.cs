@@ -27,12 +27,15 @@ public class platform_script : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             move = true;
+            Debug.Log("Move");
         } else if (collision.gameObject.tag == "top")
         {
             top = true;
+            Debug.Log("top");
         } else if (collision.gameObject.tag == "bottom")
         {
             bottom = true;
+            Debug.Log("bottom");
         }
     }
 
@@ -41,18 +44,22 @@ public class platform_script : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             move = false;
+            Debug.Log("Player");
         } else if (collision.gameObject.tag == "top")
         {
             top = false;
+            Debug.Log("Top");
         } else if (collision.gameObject.tag == "bottom")
         {
             bottom = false;
+            Debug.Log("Bottom");
         }
     }
 
     void Off()
     {
         rb.isKinematic = true;
+        Debug.Log("off");
     }
 
     void Up()
@@ -61,6 +68,7 @@ public class platform_script : MonoBehaviour
         {
             rb.isKinematic = false;
             rb.velocity = Vector2.up * speed;
+            Debug.Log("Up");
         }
     }
 
@@ -69,6 +77,7 @@ public class platform_script : MonoBehaviour
         if (move && !top)
         {
             rb.isKinematic = false;
+            Debug.Log("Down");
         }
     }
 }

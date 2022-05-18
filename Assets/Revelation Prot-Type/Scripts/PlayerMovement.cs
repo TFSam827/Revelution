@@ -20,26 +20,13 @@ public class PlayerMovement : MonoBehaviour
     private float current;
     private float move;
 
-    [SerializeField] private LayerMask m_WhatIsGround;
-    [SerializeField] private Transform m_GroundCheck;
-    const float k_GroundedRadius = .2f;
-
-    public UnityEvent OnLandEvent;
-
     float horizontalmove = 0f;
 
     bool jump = false;
     bool crouch = false;
-    bool isground = true;
-    bool dashing = true;
 
     void Awake()
     {
-        if (OnLandEvent == null)
-        {
-            OnLandEvent = new UnityEvent();
-        }
-            
         rb = GetComponent<Rigidbody2D>();
 
         controls = new PlayerControls();
@@ -52,29 +39,14 @@ public class PlayerMovement : MonoBehaviour
         controls.Gameplay.Right.canceled += ctx => Off();
         controls.Gameplay.Run.performed += ctx => RunOn();
         controls.Gameplay.Run.canceled += ctx => RunOff();
-        //controls.Gameplay.Dash.performed += ctx => Dash();
         controls.Gameplay.Jump.performed += ctx => Jump();
         controls.Gameplay.Down.started += ctx => CrouchOn();
         controls.Gameplay.Down.canceled += ctx => CrouchOff();
     }
 
-    void Update()
-    {
-        //while (dashing)
-        //{
-        //    current -= Time.deltaTime;
-        //    Debug.Log(current);
-        //}
-    }
-
     void Off()
     {
         horizontalmove = 0;
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        isground = false;
     }
 
     void Left()
@@ -96,23 +68,6 @@ public class PlayerMovement : MonoBehaviour
     void RunOff()
     {
         horizontalmove = move;
-    }
-
-    void Dash()
-    {
-        move = horizontalmove;
-        if (!isground && dashing)
-        {
-            horizontalmove = move * 2;
-
-            if (current <= 0)
-            {
-                current = time;
-                horizontalmove = move;
-                Debug.Log("Done");
-                dashing = false;
-            }
-        }
     }
 
     void Jump()
@@ -142,23 +97,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        bool wasGrounded = isground;
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].gameObject != gameObject)
-            {
-                isground = true;
-                if (!wasGrounded)
-                {
-                    OnLandEvent.Invoke();
-                }
-            }
-        }
-
         controller.Move(horizontalmove * Time.fixedDeltaTime, crouch, jump);
         jump = false;
-
     }
 }
