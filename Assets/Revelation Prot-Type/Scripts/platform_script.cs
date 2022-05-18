@@ -7,6 +7,8 @@ public class platform_script : MonoBehaviour
     Rigidbody2D rb;
     PlayerControls controls;
 
+    public float speed = 0f;
+
     bool move = false;
     bool top = false;
     bool bottom = false;
@@ -16,8 +18,8 @@ public class platform_script : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         controls = new PlayerControls();
-        controls.Gameplay.Up.performed += ctx => Down();
-        controls.Gameplay.Down.performed += ctx => Up();
+        controls.Gameplay.Up.performed += ctx => Up();
+        controls.Gameplay.Down.performed += ctx => Down();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -50,22 +52,23 @@ public class platform_script : MonoBehaviour
 
     void Off()
     {
-        rb.velocity = Vector2.zero;
-    }
-
-    void Down()
-    {
-        if (move && !bottom)
-        {
-            rb.velocity = Vector2.down;
-        }
+        rb.isKinematic = true;
     }
 
     void Up()
     {
+        if (move && !bottom)
+        {
+            rb.isKinematic = false;
+            rb.velocity = Vector2.up * speed;
+        }
+    }
+
+    void Down()
+    {
         if (move && !top)
         {
-            rb.velocity = Vector2.up;
+            rb.isKinematic = false;
         }
     }
 }

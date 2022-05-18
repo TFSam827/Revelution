@@ -678,7 +678,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 111031259}
   speed: 40
-  dash: 40
   time: 0.25
   m_WhatIsGround:
     serializedVersion: 2
@@ -1421,7 +1420,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.932956
+  orthographic size: 6.4273314
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
