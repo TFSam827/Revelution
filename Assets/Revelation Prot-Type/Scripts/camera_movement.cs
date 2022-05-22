@@ -5,8 +5,8 @@ using UnityEngine;
 public class camera_movement : MonoBehaviour
 {
     const float MAX_DISTANCE = 4f;
-    const float MAX_HEIGHT = 2.5f;
-    const float MIN_HEIGHT = -2.5f;
+    float MAX_HEIGHT = 2;
+    float MIN_HEIGHT = 2f;
 
     public Transform target; // Specify the player
     public float speed = 1;
@@ -19,7 +19,7 @@ public class camera_movement : MonoBehaviour
         projection = target.position;
     }
 
-    void LateUpdate()
+    void Update()
     {
         if ((target.position - projection).magnitude > MAX_DISTANCE)
         {
