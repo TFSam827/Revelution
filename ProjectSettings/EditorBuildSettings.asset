@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Revelation Prot-Type/Scenes/level-1.unity
     guid: 6ce3d57bdb31f4981b94ed9f8e0b381b
   - enabled: 1
-    path: Assets/Revelation Prot-Type/Scenes/title.unity
+    path: Assets/Revelation Prot-Type/Scenes/title-prototype.unity
     guid: 864db815d60724584bb5e2154edfcce7
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f7ea3bd72f78348419f1bbdee749dfc3, type: 2}
