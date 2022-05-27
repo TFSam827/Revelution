@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class click : MonoBehaviour
 {
@@ -12,17 +13,12 @@ public class click : MonoBehaviour
     void Awake()
     {
         controls = new PlayerControls();
+
+        controls.Gameplay.Start.performed += ctx => Start();
     }
 
-    void Update()
+    void Start()
     {
-        if (Input.GetMouseButton(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            // Casts the ray and get the first game object hit
-            Physics.Raycast(ray, out hit);
-            Debug.Log("This hit at " + hit.point);
-        }
+        SceneManager.LoadScene("Level-Select");
     }
 }
