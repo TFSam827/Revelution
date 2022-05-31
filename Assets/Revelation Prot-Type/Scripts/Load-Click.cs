@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 public class click : MonoBehaviour
 {
     PlayerControls controls;
+    public Scene scene;
 
-    public CharacterController2D controller;
+    CharacterController2D controller;
 
     void Awake()
     {
