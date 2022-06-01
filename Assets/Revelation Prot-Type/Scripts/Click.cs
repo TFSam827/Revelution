@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class click : MonoBehaviour
+public class Click : MonoBehaviour
 {
     PlayerControls controls;
     public Scene scene;
@@ -15,7 +15,7 @@ public class click : MonoBehaviour
     {
         controls = new PlayerControls();
 
-        controls.Gameplay.Start.performed += ctx => Start();
+        controls.Gameplay.Enter.performed += ctx => Start();
     }
 
     void Start()

@@ -6,16 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Revelation Prot-Type/Scenes/level-2.unity
-    guid: 5e641e2296636447fb16ff03c22adf7f
+    path: Assets/Revelation Prot-Type/Scenes/Title-Screen.unity
+    guid: 1f45120b62c9341539616cf6cd01d0ec
   - enabled: 1
-    path: Assets/Revelation Prot-Type/Scenes/level-3.unity
-    guid: 27025fa4c53e441788b0c5ec505db24c
-  - enabled: 1
-    path: Assets/Revelation Prot-Type/Scenes/level-1.unity
-    guid: 6ce3d57bdb31f4981b94ed9f8e0b381b
-  - enabled: 1
-    path: Assets/Revelation Prot-Type/Scenes/title-prototype.unity
-    guid: 864db815d60724584bb5e2154edfcce7
+    path: Assets/Revelation Prot-Type/Scenes/Level-Select.unity
+    guid: 5ff8c1a01a72e4fd58f1e79427ad61b6
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f7ea3bd72f78348419f1bbdee749dfc3, type: 2}
