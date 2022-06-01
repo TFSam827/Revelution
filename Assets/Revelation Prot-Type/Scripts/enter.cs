@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class click : MonoBehaviour
+public class enter : MonoBehaviour
 {
     PlayerControls controls;
     public Scene scene;
