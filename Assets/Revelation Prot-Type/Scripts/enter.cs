@@ -7,18 +7,15 @@ using UnityEngine.SceneManagement;
 public class enter : MonoBehaviour
 {
     PlayerControls controls;
-    public Scene scene;
-
-    CharacterController2D controller;
 
     void Awake()
     {
         controls = new PlayerControls();
 
-        controls.Gameplay.Enter.performed += ctx => Start();
+        controls.Gameplay.Enter.performed += ctx => Enter();
     }
 
-    void Start()
+    void Enter()
     {
         SceneManager.LoadScene("Level-Select");
     }

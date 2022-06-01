@@ -6,7 +6,7 @@ public class RespawnerBehavior : MonoBehaviour
 {
 
     public GameObject player;
-    // Update is called once per frame
+
     void Update()
     {
         if (player.activeSelf == false)

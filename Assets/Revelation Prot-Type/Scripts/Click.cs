@@ -7,19 +7,16 @@ using UnityEngine.SceneManagement;
 public class click : MonoBehaviour
 {
     PlayerControls controls;
-    public Scene scene;
-
-    CharacterController2D controller;
 
     void Awake()
     {
         controls = new PlayerControls();
 
-        controls.Gameplay.Enter.performed += ctx => Start();
+        controls.Gameplay.Click.performed += ctx => Click();
     }
 
-    void Start()
+    void Click()
     {
-        SceneManager.LoadScene("Level-Select");
+
     }
 }
