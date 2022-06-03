@@ -8,7 +8,7 @@ public class camera_movement : MonoBehaviour
     float MAX_HEIGHT = 2f;
     float MIN_HEIGHT = -2f;
 
-    public Transform target; // Specify the player
+    public GameObject target; // Specify the player
     public float speed = 1;
     private Vector3 destination;
     private Vector3 projection;
@@ -16,24 +16,32 @@ public class camera_movement : MonoBehaviour
     void Start()
     {
         destination = transform.position;
-        projection = target.position;
+        projection = target.transform.position;
     }
 
     void Update()
     {
-        if ((target.position - projection).magnitude > MAX_DISTANCE)
+        if ((target.transform.position - projection).magnitude > MAX_DISTANCE)
         {
-            projection = Vector3.MoveTowards(projection, target.position, Time.deltaTime * speed);
+            projection = Vector3.MoveTowards(projection, target.transform.position, Time.deltaTime * speed);
             destination = projection;
             destination.y = transform.position.y;
             destination.z = transform.position.z;
             transform.position = destination;
         }
-        if ((target.position - projection).y > MAX_HEIGHT || (target.position - projection).y < MIN_HEIGHT)
+        if ((target.transform.position - projection).y > MAX_HEIGHT || (target.transform.position - projection).y < MIN_HEIGHT)
         {
-            projection = Vector3.MoveTowards(projection, target.position, Time.deltaTime * speed);
+            projection = Vector3.MoveTowards(projection, target.transform.position, Time.deltaTime * speed);
             destination = projection;
             destination.x = transform.position.x;
+            destination.z = transform.position.z;
+            transform.position = destination;
+        }
+        if (target.activeSelf == false)
+        {
+            projection = Vector3.MoveTowards(projection, target.transform.position, Time.deltaTime * speed);
+            destination = projection;
+            destination.y = target.transform.position.y;
             destination.z = transform.position.z;
             transform.position = destination;
         }

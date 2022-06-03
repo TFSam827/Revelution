@@ -10,6 +10,7 @@ TagManager:
   - edge
   - top
   - bottom
+  - Sword
   layers:
   - Default
   - TransparentFX
