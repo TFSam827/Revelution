@@ -1585,7 +1585,7 @@ SpriteRenderer:
   m_Size: {x: 0.19, y: 0.17}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &212135503
@@ -3067,13 +3067,33 @@ GameObject:
   - component: {fileID: 514627182}
   - component: {fileID: 514627178}
   - component: {fileID: 514627177}
+  - component: {fileID: 514627176}
   m_Layer: 3
-  m_Name: Luigi
+  m_Name: Link
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &514627176
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514627175}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5ae522a5f00da4a1d8bd2ba609aedf7a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &514627177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3115,9 +3135,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.005086139, y: -0.10870379}
+  m_Offset: {x: 0.02, y: -0.12}
   serializedVersion: 2
-  m_Radius: 0.08284649
+  m_Radius: 0.13
 --- !u!61 &514627180
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3131,18 +3151,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.004677087, y: 0.07132171}
+  m_Offset: {x: 0.00022411346, y: 0.07940607}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.13, y: 0.39}
+    oldSize: {x: 0.23, y: 0.47}
     newSize: {x: 0.13, y: 0.39}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1268819, y: 0.14757875}
+  m_Size: {x: 0.21094513, y: 0.30926588}
   m_EdgeRadius: 0
 --- !u!50 &514627181
 Rigidbody2D:
@@ -3233,7 +3253,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6039c9dd254164e5fbb99cfc7c3a094b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2d5f835bb8f1b4d18bbeb2deb4d2c181, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3252,7 +3272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514627175}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 63.979652, y: -1.401, z: -1}
+  m_LocalPosition: {x: 63.951, y: -1.285, z: -1}
   m_LocalScale: {x: 4, y: 4, z: 0}
   m_Children:
   - {fileID: 444168989}
@@ -4696,7 +4716,7 @@ SpriteRenderer:
   m_Size: {x: 0.14, y: 0.22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &916021036
