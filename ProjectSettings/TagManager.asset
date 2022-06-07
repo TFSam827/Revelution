@@ -11,6 +11,7 @@ TagManager:
   - top
   - bottom
   - Sword
+  - Enemy
   layers:
   - Default
   - TransparentFX
