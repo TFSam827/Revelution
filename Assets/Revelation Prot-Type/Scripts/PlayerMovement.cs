@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerControls controls;
 
     public CharacterController2D controller;
+    public Animator animate;
 
     public float speed = 0f;
     public float time = 0f;
@@ -47,32 +48,43 @@ public class PlayerMovement : MonoBehaviour
     void Off()
     {
         horizontalmove = 0;
+        animate.SetBool("Move", false);
     }
 
     void Left()
     {
         horizontalmove = -1 * speed;
+        animate.SetBool("Move", true);
     }
 
     void Right()
     {
         horizontalmove = 1 * speed;
+        animate.SetBool("Move", true);
     }
 
     void RunOn()
     {
         move = horizontalmove;
         horizontalmove = horizontalmove * 2f;
+        animate.SetBool("Move", true);
     }
 
     void RunOff()
     {
         horizontalmove = move;
+        animate.SetBool("Move", false);
     }
 
     void Jump()
     {
         jump = true;
+        animate.SetBool("Jump", true);
+    }
+
+    public void OnLanding()
+    {
+        animate.SetBool("Jump", false);
     }
 
     void CrouchOn()
