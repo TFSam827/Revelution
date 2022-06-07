@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class click : MonoBehaviour
+public class Start : MonoBehaviour
 {
     PlayerControls controls;
 
@@ -12,11 +12,11 @@ public class click : MonoBehaviour
     {
         controls = new PlayerControls();
 
-        controls.Gameplay.Click.performed += ctx => Click();
+        controls.Gameplay.Enter.performed += ctx => Enter();
     }
 
-    void Click()
+    void Enter()
     {
-
+        SceneManager.LoadScene("Level-Select");
     }
 }
