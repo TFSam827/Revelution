@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         controls.Gameplay.Run.performed += ctx => RunOn();
         controls.Gameplay.Run.canceled += ctx => RunOff();
         controls.Gameplay.Jump.performed += ctx => Jump();
+        controls.Gameplay.Esc.performed += ctx => Pause();
         controls.Gameplay.Down.started += ctx => CrouchOn();
         controls.Gameplay.Down.canceled += ctx => CrouchOff();
     }
@@ -105,6 +107,11 @@ public class PlayerMovement : MonoBehaviour
     void OnDisable()
     {
         controls.Gameplay.Disable();
+    }
+
+    void Pause()
+    {
+        SceneManager.LoadScene("Game-Over");
     }
 
     void FixedUpdate()

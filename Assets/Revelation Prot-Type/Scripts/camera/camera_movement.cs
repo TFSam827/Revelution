@@ -19,7 +19,7 @@ public class camera_movement : MonoBehaviour
         projection = target.transform.position;
     }
 
-    void Update()
+    void LateUpdate()
     {
         if ((target.transform.position - projection).magnitude > MAX_DISTANCE)
         {
@@ -29,7 +29,7 @@ public class camera_movement : MonoBehaviour
             destination.z = transform.position.z;
             transform.position = destination;
         }
-        if ((target.transform.position - projection).y > MAX_HEIGHT || (target.transform.position - projection).y < MIN_HEIGHT)
+        if ((target.transform.position - projection).y >= MAX_HEIGHT || (target.transform.position - projection).y <= MIN_HEIGHT)
         {
             projection = Vector3.MoveTowards(projection, target.transform.position, Time.deltaTime * speed);
             destination = projection;
