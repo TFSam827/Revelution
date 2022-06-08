@@ -8,6 +8,8 @@ public class Checkpoint : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-            Respawn.transform.position = transform.position;
+        Vector3 Object = transform.position;
+        Object.z = Respawn.transform.position.z;
+        Respawn.transform.position = Object;
     }
 }
