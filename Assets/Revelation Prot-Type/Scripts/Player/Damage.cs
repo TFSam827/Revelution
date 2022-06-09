@@ -5,8 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Damage : MonoBehaviour
 {
+    Rigidbody2D rb;
     public Transform spawner;
     float health = 4f;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -23,6 +29,7 @@ public class Damage : MonoBehaviour
         if (collision.gameObject.tag == "edge")
         {
             transform.position = spawner.position;
+            rb.velocity = Vector3.zero;
         }
     }
 

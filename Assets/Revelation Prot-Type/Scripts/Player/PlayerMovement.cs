@@ -75,18 +75,11 @@ public class PlayerMovement : MonoBehaviour
     void RunOff()
     {
         horizontalmove = move;
-        animate.SetBool("Move", false);
     }
 
     void Jump()
     {
         jump = true;
-        animate.SetBool("Jump", true);
-    }
-
-    public void OnLanding()
-    {
-        animate.SetBool("Jump", false);
     }
 
     void CrouchOn()
