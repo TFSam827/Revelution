@@ -16,6 +16,7 @@ public class PlayerCollision : MonoBehaviour
         {
             transform.position = spawner.position;
             rb.velocity = Vector3.zero;
+
         } else if (collision.gameObject.tag == "edge")
         {
             transform.position = spawner.position;
