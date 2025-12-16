@@ -69,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
     {
         move = horizontalmove;
         horizontalmove = horizontalmove * 2f;
+        animate.SetBool("Move", true);
     }
 
     void RunOff()
